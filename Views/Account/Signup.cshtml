@@ -1,0 +1,50 @@
+﻿@using static TaskManager.Models.ViewModels.UserViewModels
+@model SignupModel
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2 class="welcome-title">Sign up</h2>
+
+<div class="text-danger" asp-validation-summary="All"></div>
+
+@* <h1 class="welcome-title">Hello</h1> *@
+
+<form class="form" asp-action="Signup" method="post" enctype="multipart/form-data">
+
+    <div class="mb-3">
+        <label asp-for="UserName" class="form-label"></label>
+        <input asp-for="UserName" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label">Email</label>
+        <input asp-for="Email" class="form-control" type="email" name="Email" id="Email" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Password" class="form-label">Password</label>
+        <input asp-for="Password" class="form-control" type="password" name="Password" id="Password" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ConfirmPassword" class="form-label"></label>
+        <input asp-for="ConfirmPassword" class="form-control" />
+    </div>
+
+    @* <div class="mb-3">
+        <label class="form-label">Upload an avatar image</label>
+        <input asp-for="AvatarImage" class="form-control" />
+    </div> *@
+
+    <div class="mb-3">
+        <button type="submit" class="lp-btn btn">Sign up</button>
+    </div>
+
+</form>
+
+<p class="login-prompt">
+    Already have an account?
+    <a href="login.html" class="login-link">Log in</a>
+</p>

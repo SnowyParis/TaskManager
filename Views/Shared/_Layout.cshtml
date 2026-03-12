@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>@ViewBag.Title</title> @*when the page displays, the value of the title will come from title specified in index.cshtml*@
+
+        @*Bootstrap*@
+        <link rel="stylesheet" asp-href-include="/lib/bootstrap/css/bootstrap.css/bootstrap.min.css" /> @*link in solution explorer*@
+
+        @*Font-awesome*@
+        <link rel="stylesheet" asp-href-include="/lib/font-awesome/css/all.css/all.min.css" />
+    
+        @*Custom css*@
+        <link rel="stylesheet" asp-href-include="/css/styles.css" /> @*link in solution explorer*@
+        <link rel="stylesheet" asp-href-include="/css/dashboard.css" />
+    </head>
+
+    <body>
+
+        <!-- header -->
+        <div class="max-width-container">
+            <div class="header flex items-center justify-between">
+                <h1 class="title">My Tasks</h1>
+                <div class="button-container">
+                    <button id="add-task" class="btn regular-button">Add task</button>
+                    <button class="sign-out">Sign out</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            @RenderBody()
+        </div>
+    </body>
+
+</html>
