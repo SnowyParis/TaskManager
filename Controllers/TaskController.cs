@@ -24,16 +24,17 @@ namespace TaskManager.Controllers
         {
             // create new Product object
             TaskModel task = new TaskModel();
-            ViewBag.Action = "Add";
-            
+            ViewBag.Action = "Add task";
+
             // bind product to AddUpdate view
             return View("AddUpdate", task);
+            //return View("AddUpdate");
         }
 
         [HttpGet]
         public IActionResult Update(int id) //updating object
         {
-            ViewBag.Action = "Edit";
+            ViewBag.Action = "Save";
             return View("AddUpdate", _taskRepository.GetTaskById(id));
         }
 
@@ -42,12 +43,21 @@ namespace TaskManager.Controllers
         {
             ViewBag.Action = "Save";
 
+            //converting DueDate into universal time
+            //DateTime LocalDueDate = DateTime.SpecifyKind((DateTime)task.DueDate, DateTimeKind.Local); //in order to use ToUniversalTime(), we need task.DueDate to have a kind
+
+            //if (LocalDueDate.ToUniversalTime() <= DateTime.UtcNow)
+            //{
+            //    ModelState.AddModelError("DueDate", "Due date must be in the future.");
+            //}
+
             if (ModelState.IsValid)
             {
                 try
                 {
                     if (task.TaskID == 0)
                     {
+                        //task.DueDate = LocalDueDate.ToUniversalTime(); // Store dates in database as UTC (universal)
                         _taskRepository.AddTask(task);
                     }
                     else

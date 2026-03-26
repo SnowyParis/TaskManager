@@ -5,30 +5,28 @@
 }
 
 <!-- grid view -->
-<div id="grid-view" class="grid-view hide">
+<div id="grid-view" class="grid-view">
     <!-- list -->
     <div>
         <h2 class="grid-header">
-            <span class="circle pink-background"></span>
             <span class="text">To do</span>
         </h2>
-        <ul class="tasks-list pink">
+        <ul class="tasks-list">
 
             @foreach (TaskModel t in Model)
             {
                 <li class="task-item">
-                    <button class="task-button">
-                        <a asp-controller="Task" asp-action="Details" asp-route-id="@t.TaskID">
-                            <div>
-                                <p class="task-name">@t.TaskName</p>
-                                <p class="task-due-date">@t.DueDate</p>
-                            </div>
+                    <a class="task-button" asp-controller="Task" asp-action="Details" asp-route-id="@t.TaskID">
+                        <div>
+                            <p class="task-name">@t.TaskName</p>
+                            <p class="task-due-date">@t.DueDate</p>
+                        </div>
 
-                            <i class="fa-solid fa-angle-right arrow-icon"></i>
-                        </a>
-                    </button>
+                        <i class="fa-solid fa-angle-right arrow-icon"></i>
+                    </a>
                 </li>
             }
+
         </ul>
     </div>
 </div>

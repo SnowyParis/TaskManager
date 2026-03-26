@@ -1,79 +1,38 @@
 ﻿@model TaskModel
 @{
     string title = ViewBag.Action + " Task";
-    ViewBag.Title = title;    // sets title to "Add Product" or "Update Product"
+    ViewBag.Title = title;    // sets title to "Add Task" or "Update Task"
 }
 
 <h1>@ViewBag.Title</h1>
 
-<div id="set-task-overlay" class="overlay set-task-overlay">
-    <div class="overlay-content pink-background">
+<div id="add-task-overlay" class="overlay add-task-overlay">
+    <div class="overlay-content">
         <!-- close button -->
-        <button class="btn circle-button blue-background flex justify-center items-center close-button">
-            <a asp-controller="Home" asp-action="Index">
-                <i class="fa-solid fa-xmark"></i>
-            </a>
-        </button>
+        <a asp-controller="Task" asp-action="Index"
+            class="btn circle-button lgray-background flex justify-center items-center close-button">
+            <i class="fa-solid fa-xmark"></i>
+        </a>
 
         <h1 class="header">Add tasks</h1>
 
         <form asp-action="Update" class="form" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
 
             <label asp-for="TaskName" class="form-label">Task Name</label>
-            <input asp-for="TaskName" type="text" name="name" class="form-control white-background" required>
+            <input type="text" asp-for="TaskName" class="form-control white-background" />
 
             <label asp-for="Description" class="form-label">Task Description</label>
-            <textarea asp-for="Description" name="description" rows="8" class="textarea-input white-background"></textarea>
+            <textarea asp-for="Description" rows="5" class="textarea-input white-background"></textarea>
 
-            <h2 class="form-label">Due date</h2>
-
-            <div class="divided-inputs-container">
-                <div>
-                    <label asp-for="DueDate" class="secondary-label">Day</label>
-                    <input asp-for="DueDate" type="text" name="due-date-day" id="due-date-day" class="form-control white-background" required>
-                </div>
-
-                
-            </div>
-
-            <h2 class="form-label">Priority</h2>
-
-            <div id="priority-select" class="priority-select white-background flex items-center justify-between cursor-pointer">
-                <span>Standard</span>
-                <i class="fa-solid fa-angle-down"></i>
-            </div>
-
-            <ul id="priority-dropdown" class="priority-dropdown white-background hide">
-                <li>
-                    <input type="radio" name="priority-option" id="standard-radio" value="Standard" class="radio-input">
-                    <label for="standard-radio" class="radio-label">
-                        <span class="circle pink-background"></span>
-                        <span>Standard</span>
-                    </label>
-                </li>
-
-                <li>
-                    <input type="radio" name="priority-option" id="important-radio" value="Important" class="radio-input">
-                    <label for="important-radio" class="radio-label">
-                        <span class="circle blue-background"></span>
-                        <span>Important</span>
-                    </label>
-                </li>
-
-                <li>
-                    <input type="radio" name="priority-option" id="urgent-radio" value="Urgent" class="radio-input">
-                    <label for="urgent-radio" class="radio-label">
-                        <span class="circle green-background"></span>
-                        <span>Urgent</span>
-                    </label>
-                </li>
-            </ul>
+            <label asp-for="DueDate" class="form-label">Due Date</label>
+            <input type="datetime-local" asp-for="DueDate" class="form-control white-background" />
 
             <input type="hidden" asp-for="TaskID" />
 
-            <div class="text-center">
-                <button type="submit" class="btn regular-button cta-button green-background">@ViewBag.Action</button>
-                <a asp-controller="Home" asp-action="Index" class="btn beige-background">Cancel</a>
+            <div class="text-center button-container">
+                <button type="submit" class="btn regular-button cta-button lgray-background">@ViewBag.Action</button>
+                <a asp-controller="Task" asp-action="Index" class="btn regular-button cta-button mgray-background">Cancel</a>
             </div>
             
         </form>

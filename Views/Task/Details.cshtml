@@ -3,46 +3,39 @@
     ViewBag.Title = "Task Details";
 }
 
-<div id="view-task-overlay" class="overlay view-task-overlay">
-    <div class="overlay-content green-background">
+<div class="overlay task-overlay">
+    <div class="overlay-content">
         <!-- close button -->
-        <button class="btn circle-button blue-background flex justify-center items-center close-button">
+        <a asp-action="Index" class="btn circle-button lgray-background flex justify-center items-center close-button">
             <i class="fa-solid fa-xmark"></i>
-        </button>
+        </a>
 
         <h1 class="header no-margin">Name</h1>
         <p class="value">@Model.TaskName</p>
 
-        <h1 class="header">Description</h1>
-        <p class="value">@Model.Description</p>
-
+        @if (!string.IsNullOrEmpty(Model.Description))
+        {
+            <h1 class="header">Description</h1>
+            <p class="value">@Model.Description</p>
+        }
+        
         <div class="flex items-center">
             <h1 class="header min-width">Due date</h1>
             <p class="value">@Model.DueDate</p>
         </div>
 
-        <div class="flex items-center">
-            <h1 class="header min-width">Priority</h1>
-            <p class="value priority-value">
-                <span class="circle blue-background"></span>
-                <span>@Model.Priority</span>
-            </p>
-        </div>
-
         <div class="control-buttons-container">
             <!-- edit button -->
-            <button class="btn circle-button pink-background flex justify-center items-center">
-                <a asp-action="Update" asp-route-id="@Model.TaskID">
-                    <i class="fa-solid fa-pencil"></i>
-                </a>
-            </button>
+            <a asp-action="Update" asp-route-id="@Model.TaskID" asp-route-slug="@Model.Slug"
+               class="btn circle-button lgray-background flex justify-center items-center">
+                <i class="fa-solid fa-pencil"></i>
+            </a>
 
             <!-- delete button -->
-            <button id="delets-task-cta" class="btn circle-button pink-background flex justify-center items-center">
-                <a asp-action="Delete" asp-route-id="@Model.TaskID">
-                    <i class="fa-solid fa-trash"></i>
-                </a>
-            </button>
+            <a asp-action="Delete" asp-route-id="@Model.TaskID" asp-route-slug="@Model.Slug"
+               class="btn circle-button lgray-background flex justify-center items-center">
+                <i class="fa-solid fa-trash"></i>
+            </a>
         </div>
     </div>
 </div>

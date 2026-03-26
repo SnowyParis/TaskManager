@@ -10,11 +10,17 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-
+    background-color: #F0F0F0;
+    overflow-x: hidden;
 }
 
-body.overflow-hidden {
-    overflow: hidden;
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
 }
 
 :root {
@@ -24,15 +30,11 @@ body.overflow-hidden {
 
     --black: #000;
     --dark-grey: #504e4e;
-    --blue: #82cfff;
-    --pink: #ff9c9c;
-    --green: #abe5bc;
-    --beige: #fffaf0;
     --white: #fff;
 
-    --green-shadow: 6px 6px 0px var(--green);
-    --blue-shadow: 6px 6px 0px var(--blue);
-    --pink-shadow: 6px 6px 0px var(--pink);
+    --bg-color : #F0F0F0;
+    --overlay-bg-color : #BDBDBD;
+
     --black-shadow: 4px 4px 0px var(--black);
 
     --space-4: 4px;
@@ -51,51 +53,21 @@ html, body {
     height: 100%;
 }
 
-body {
-    background-color: var(--beige);
-    overflow: hidden;
-}
-
-.right-column {
-    display: none;
-}
-
-.left-column {
-    padding: var(--space-16);
-}
-
-.welcome-title {
-    font-weight: 600;
-    font-size: var(--font-size-24);
-}
-
 .form {
     max-width: 338px;
 }
 
 .lp-btn {
     width: 97%;
-    /* margin-right: var(--space-16); */
     margin-top: var(--space-16);
     margin-bottom: var(--space-4);
-}
-
-.login-prompt, .signup-prompt {
-    font-weight: 500;
-    font-size: var(--font-size-14);
-    margin-top: var(--space-8);
-    text-align: center;
-}
-
-.login-link, .signup-link {
-    font-weight: 600;
-    text-decoration: underline;
 }
 
 .max-width-container {
     max-width: 1232px;
     margin-inline: auto;
-    padding-inline: var(--space-16);
+    padding-inline: var(--space-32);
+    margin-top: 1.2rem;
 }
 
 .flex {
@@ -118,9 +90,9 @@ body {
     flex-direction: column;
 }
 
-.height-full {
+/*.height-full {
     height: 100%;
-}
+}*/
 
 .text-center {
     text-align: center;
@@ -134,16 +106,12 @@ body {
     background: var(--white);
 }
 
-.blue-background {
-    background: var(--blue);
+.lgray-background {
+    background: #EEEEEE;
 }
 
-.pink-background {
-    background: var(--pink);
-}
-
-.green-background {
-    background: var(--green);
+.mgray-background {
+    background: #C0C0C0;
 }
 
 form * {
@@ -166,14 +134,7 @@ form * {
     margin-top: 0;
 }
 
-.secondary-label {
-    font-weight: 550;
-    font-size: var(--font-size-14);
-    margin-top: var(--space-16);
-    display: block;
-}
-
-.form-control, .textarea-input, .priority-select {
+.form-control, .textarea-input {
     border: 2px solid var(--black);
     border-radius: var(--radius-8);
     width: 100%;
@@ -181,37 +142,8 @@ form * {
     margin-top: var(--space-8);
 }
 
-.form-control, .priority-select {
-    height: var(--input-height);
-}
-
 .textarea-input {
     resize: none;
-}
-
-.priority-select .arrow-icon {
-    margin-bottom: var(--space-8);
-}
-
-.priority-dropdown {
-    border: 2px solid var(--black);
-    border-radius: var(--radius-8);
-    margin-top: var(--space-4);
-    padding: var(--space-16);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-8);
-}
-
-.priority-dropdown.hide {
-    display: none;
-}
-
-.priority-dropdown .radio-label {
-    display: flex;
-    align-items: center;
-    gap: var(--space-8);
-    cursor: pointer;
 }
 
 .form .cta-button {
@@ -221,11 +153,10 @@ form * {
 .btn {
     font: inherit;
     font-weight: 600;
-    /* background-color: var(--pink); */
     cursor: pointer;
     color: currentColor;
-    border: 2px solid var(--black);
-    box-shadow: var(--black-shadow);
+    border: 2px solid #757575;
+    box-shadow: 4px 4px 0px #757575;
     border-radius: var(--radius-8);
 }
 
@@ -239,44 +170,11 @@ form * {
 .regular-button {
     font-weight: 600;
     padding-inline: var(--space-16);
-    height: var(--input-height);
-}
-
-.circle {
-    width: 14px;
-    height: 14px;
-    border-radius: 100%;
-}
-
-ul {
-
-}
-
-a {
-    color: inherit;
 }
 
 @media (min-width: 768px) {
-    .divided-inputs-container {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        column-gap: var(--space-16);
-    }
-
-    .right-column {
-        display: block;
-        border-left: 2px solid var(--black);
-        background-image: url(images/HappyColor_51570.png);
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-    }
-
     .row {
         display: flex;
     }
 
-    .left-column, .right-column {
-        width: 50%;
-    }
 }
