@@ -1,0 +1,41 @@
+﻿@model TaskModel
+@{
+    ViewBag.Title = "Task Details";
+}
+
+<div class="overlay task-overlay">
+    <div class="overlay-content">
+        <!-- close button -->
+        <a asp-action="Index" class="btn circle-button lgray-background flex justify-center items-center close-button">
+            <i class="fa-solid fa-xmark"></i>
+        </a>
+
+        <h1 class="header no-margin">Task name</h1>
+        <p class="value">@Model.TaskName</p>
+
+        @if (!string.IsNullOrEmpty(Model.Description))
+        {
+            <h1 class="header">Description</h1>
+            <p class="value">@Model.Description</p>
+        }
+        
+        <div class="flex items-center">
+            <h1 class="header min-width">Due date</h1>
+            <p class="value">@Model.DueDate</p>
+        </div>
+
+        <div class="control-buttons-container">
+            <!-- edit button -->
+            <a asp-action="Update" asp-route-id="@Model.TaskID" asp-route-slug="@Model.Slug"
+               class="btn circle-button lgray-background flex justify-center items-center">
+                <i class="fa-solid fa-pencil"></i>
+            </a>
+
+            <!-- delete button -->
+            <a asp-action="Delete" asp-route-id="@Model.TaskID" asp-route-slug="@Model.Slug"
+               class="btn circle-button lgray-background flex justify-center items-center">
+                <i class="fa-solid fa-trash"></i>
+            </a>
+        </div>
+    </div>
+</div>

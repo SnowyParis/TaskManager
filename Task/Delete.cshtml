@@ -1,0 +1,36 @@
+﻿@model TaskModel
+
+@{
+    ViewBag.Title = "Delete Task";
+}
+
+<div class="overlay task-overlay">
+    <div class="overlay-content pink-background">
+        <!-- close button -->
+        <a asp-action="Index" class="btn circle-button lgray-background flex justify-center items-center close-button">
+            <i class="fa-solid fa-xmark"></i>
+        </a>
+
+        <h1 class="header no-margin">Delete Task</h1>
+        <p class="text-danger">@ViewData["ErrorMessage"]</p>
+
+        <p class="value">Are you sure you want to delete this task?</p>
+
+        <div>
+            <hr />
+                <h1 class="header">Task Name</h1>
+                <p class="value">@Model.TaskName</p>
+        </div>
+
+        <form asp-action="Delete" method="post">
+            <input type="hidden" asp-for="TaskID" />
+            <input type="hidden" asp-for="TaskName" />
+
+            <!-- delete & cancel buttons -->
+            <div class="text-center button-container">
+                <button type="submit" class="btn regular-button cta-button lgray-background">Delete</button>
+                <a asp-controller="Task" asp-action="Index" class="btn regular-button cta-button mgray-background">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

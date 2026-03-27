@@ -90,10 +90,6 @@ html, body {
     flex-direction: column;
 }
 
-/*.height-full {
-    height: 100%;
-}*/
-
 .text-center {
     text-align: center;
 }
@@ -170,11 +166,4 @@ form * {
 .regular-button {
     font-weight: 600;
     padding-inline: var(--space-16);
-}
-
-@media (min-width: 768px) {
-    .row {
-        display: flex;
-    }
-
 }
