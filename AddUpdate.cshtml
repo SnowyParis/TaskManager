@@ -1,0 +1,41 @@
+﻿@model TaskModel
+@{
+    string title = ViewBag.Action + " Task";
+    ViewBag.Title = title;    // sets title to "Add Task" or "Update Task"
+}
+
+<h1>@ViewBag.Title</h1>
+
+<div class="overlay add-task-overlay">
+    <div class="overlay-content">
+        <!-- close button -->
+        <a asp-controller="Task" asp-action="Index"
+            class="btn circle-button lgray-background flex justify-center items-center close-button">
+            <i class="fa-solid fa-xmark"></i>
+        </a>
+
+        <h1 class="header">@ViewBag.Title</h1>
+
+        <form asp-action="Update" class="form" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <label asp-for="TaskName" class="form-label">Task Name</label>
+            <input type="text" asp-for="TaskName" class="form-control white-background" />
+
+            <label asp-for="Description" class="form-label">Task Description</label>
+            <textarea asp-for="Description" rows="5" class="textarea-input white-background"></textarea>
+
+            <label asp-for="DueDate" class="form-label">Due Date</label>
+            <input type="datetime-local" asp-for="DueDate" class="form-control white-background" />
+
+            <input type="hidden" asp-for="TaskID" />
+
+            <!-- add/save/cancel buttons -->
+            <div class="text-center button-container">
+                <button type="submit" class="btn regular-button cta-button lgray-background">@ViewBag.Title</button>
+                <a asp-controller="Task" asp-action="Index" class="btn regular-button cta-button mgray-background">Cancel</a>
+            </div>
+            
+        </form>
+    </div>
+</div>
